@@ -1,11 +1,15 @@
 📊 Sistema Integrado de Gestão de Dízimos e Contas
+
 📝 Descrição
+
 Sistema desenvolvido para facilitar a gestão financeira de comunidades religiosas, com foco no controle de dízimos e prestação de contas.
 
 Desenvolvido por: Maria Maura Reis, estudante de Análise e Desenvolvimento de Sistemas.
 
 🚀 Funcionalidades
-1. Gestão de Dízimos
+
+# 1. Gestão de Dízimos
+   
 ✅ Cadastro de membros (com número de cadastro único)
 
 ✅ Registro de dízimos com:
@@ -30,7 +34,8 @@ Pagamento duplo (ex: Dinheiro + PIX)
 
 ✅ Limpeza total do banco de dados
 
-2. Prestação de Contas
+# 2. Prestação de Contas
+
 ✅ Controle de saldo anterior
 
 ✅ Registro de entradas:
@@ -74,6 +79,7 @@ projeto/
     └── main.js             # Inicialização do sistema
     
 🛠️ Tecnologias Utilizadas
+
 HTML5 - Estrutura da página
 
 CSS3 - Estilização e responsividade
@@ -83,6 +89,7 @@ JavaScript (Vanilla) - Lógica do sistema
 localStorage - Armazenamento persistente dos dados
 
 📦 Instalação e Execução
+
 Pré-requisitos
 Navegador web moderno (Chrome, Firefox, Edge, etc.)
 
@@ -109,6 +116,7 @@ Os dados são salvos automaticamente no localStorage do navegador
 Não é necessário servidor ou banco de dados externo
 
 💡 Como Usar
+
 Cadastrar um Dízimo
 Preencha os campos:
 
@@ -182,6 +190,7 @@ Clique em "Limpar" para resetar os campos
 
 ⚠️ Limitações e Observações
 Importante:
+
 Os dados são armazenados apenas no navegador (localStorage)
 
 Não compartilhe o navegador entre diferentes usuários sem limpar os dados
@@ -193,6 +202,7 @@ A edição de um dízimo não atualiza automaticamente os dados do membro
 Pagamentos duplos são exibidos como "Forma 1 RX + Forma 2 RX
 
 Navegadores Suportados:
+
 ✅ Google Chrome (recomendado)
 
 ✅ Mozilla Firefox
@@ -204,6 +214,7 @@ Navegadores Suportados:
 ✅ Safari
 
 🐛 Problemas Conhecidos
+
 Problema	Solução
 Dados não salvam	Verifique se o localStorage está habilitado no navegador
 Modal não abre	Recarregue a página e tente novamente
@@ -211,13 +222,16 @@ Relatório não atualiza	Clique em "Emitir Relatório" novamente
 Exportação não funciona	Verifique se há dados cadastrados
 
 📝 Licença
+
 Este projeto é de uso livre para fins educacionais e comunitários.
 
 🙏 Agradecimentos
+
 Comunidade religiosa que inspirou o desenvolvimento
 
 
 📞 Contato
+
 Desenvolvedora: Maria Maura Reis
 Curso: Bacharelado em Ciencias Exatas e Tecnologicas/Engenharia da Computaçao
 
