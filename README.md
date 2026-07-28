@@ -64,7 +64,7 @@ Transporte e outras saídas
 
 ✅ Resumo detalhado do caixa
 
-📁 Estrutura do Projeto
+# 3. 📁 Estrutura do Projeto
 text
 projeto/
 ├── index.html              # Página principal
@@ -78,7 +78,7 @@ projeto/
     ├── modal.js            # Modal de edição/exclusão
     └── main.js             # Inicialização do sistema
     
-🛠️ Tecnologias Utilizadas
+# 4. 🛠️ Tecnologias Utilizadas
 
 HTML5 - Estrutura da página
 
@@ -88,7 +88,7 @@ JavaScript (Vanilla) - Lógica do sistema
 
 localStorage - Armazenamento persistente dos dados
 
-📦 Instalação e Execução
+# 5.📦 Instalação e Execução
 
 Pré-requisitos
 Navegador web moderno (Chrome, Firefox, Edge, etc.)
@@ -100,7 +100,9 @@ Clone ou baixe o projeto
 
 bash
 git clone [url-do-repositorio]
+
 # ou baixe o ZIP e extraia
+
 Abra o arquivo index.html
 
 Navegue até a pasta do projeto
@@ -115,9 +117,10 @@ Os dados são salvos automaticamente no localStorage do navegador
 
 Não é necessário servidor ou banco de dados externo
 
-💡 Como Usar
+# 6.💡 Como Usar
 
 Cadastrar um Dízimo
+
 Preencha os campos:
 
 Meses de Referência: Mês(es) a que o dízimo se refere (ex: 03/2025)
@@ -134,7 +137,7 @@ Data/Mês de Devolução: Data do ato (formato DD/MM)
 
 Valor: Valor do dízimo
 
-Para pagamento duplo:
+# Para pagamento duplo:
 
 Marque a opção "Pagamento dividido em duas formas"
 
@@ -144,17 +147,19 @@ Exemplo: Dinheiro R100,00 + PIX R100,00 + PIXR 50,00
 
 Clique em "Cadastrar e Registrar"
 
-Consultar Membro
+# Consultar Membro:
+
 Digite o número de cadastro
 
 Clique em "Consultar"
 
 Visualize os dados e histórico do membro
 
-Gerar Relatório
+# Gerar Relatório
+
 Clique em "Emitir Relatório"
 
-Visualize:
+# Visualize:
 
 Total arrecadado
 
@@ -162,13 +167,13 @@ Lista completa de dízimos
 
 Resumo por forma de pagamento
 
-Ações disponíveis:
+# Ações disponíveis:
 
 Editar: Altera o registro selecionado
 
 Excluir: Remove o registro
 
-*Exportar Dados:*
+# Exportar Dados:
 
 Clique em "Exportar para CSV"
 
@@ -176,7 +181,7 @@ O arquivo será baixado automaticamente
 
 Abra no Excel, Google Sheets ou outro editor
 
-*Prestação de Contas*
+# Prestação de Contas
 
 Preencha o saldo anterior
 
@@ -188,7 +193,8 @@ Visualize o resumo completo do caixa
 
 Clique em "Limpar" para resetar os campos
 
-⚠️ Limitações e Observações
+# 7. ⚠️ Limitações e Observações
+
 Importante:
 
 Os dados são armazenados apenas no navegador (localStorage)
@@ -201,7 +207,7 @@ A edição de um dízimo não atualiza automaticamente os dados do membro
 
 Pagamentos duplos são exibidos como "Forma 1 RX + Forma 2 RX
 
-Navegadores Suportados:
+# 8. Navegadores Suportados:
 
 ✅ Google Chrome (recomendado)
 
@@ -213,7 +219,7 @@ Navegadores Suportados:
 
 ✅ Safari
 
-🐛 Problemas Conhecidos
+# 9. 🐛 Problemas Conhecidos
 
 Problema	Solução
 Dados não salvam	Verifique se o localStorage está habilitado no navegador
@@ -221,7 +227,7 @@ Modal não abre	Recarregue a página e tente novamente
 Relatório não atualiza	Clique em "Emitir Relatório" novamente
 Exportação não funciona	Verifique se há dados cadastrados
 
-📝 Licença
+# 10. 📝 Licença
 
 Este projeto é de uso livre para fins educacionais e comunitários.
 
