@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Integrado de Gestão de Dízimos e Contas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema Integrado de Gestão de Dízimos e Contas</h1>
+        <div class="creator">
+            Desenvolvido por Maria Maura Reis, estudante de Análise e Desenvolvimento de Sistemas.<br>
+            Este sistema foi criado para facilitar a gestão financeira de comunidades religiosas.
+        </div>
+        
+        <div class="tab-container">
+            <div class="tab active" onclick="openTab('dizimos')">Gestão de Dízimos</div>
+            <div class="tab" onclick="openTab('contas')">Prestação de Contas</div>
+        </div>
+        
+        <!-- Aba de Gestão de Dízimos -->
+        <div id="dizimos" class="tab-content active">
+            <div class="section">
+                <h2>Cadastro e Registro de Dízimos</h2>
+                <div class="form-group">
+                    <label for="meses-referencia">Meses de Referência (Atrasados):</label>
+                    <input type="text" id="meses-referencia" placeholder="Ex: 01/2024, 02/2024 (opcional, múltiplos separados por vírgula)">
+                    <small style="display: block; color: #666;">Informe o(s) mês(es) a que o dízimo se refere (ex: 03/2025). Deixe em branco se for mês atual.</small>
+                </div>
+                
+                <!-- Opção para pagamento duplo -->
+                <div class="pagamento-duplo">
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <label>
+                            <input type="checkbox" id="pagamento-duplo-check" onchange="togglePagamentoDuplo()">
+                            Pagamento dividido em duas formas (ex: Dinheiro + PIX)
+                        </label>
+                    </div>
+                    <div id="pagamento-duplo-campos" style="display: none;">
+                        <div class="form-row-3">
+                            <div class="form-group">
+                                <label for="forma-pagamento-1">1ª Forma de Pagamento:</label>
+                                <select id="forma-pagamento-1">
+                                    <option value="PIX">PIX</option>
+                                    <option value="Dinheiro">Dinheiro</option>
+                                    <option value="Cartão">Cartão</option>
+                                    <option value="Transferência">Transferência</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="valor-pagamento-1">Valor (1ª forma):</label>
+                                <div class="currency-input">
+                                    <input type="text" id="valor-pagamento-1" placeholder="0,00" value="0,00" onblur="formatCurrency(this)">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="forma-pagamento-2">2ª Forma de Pagamento:</label>
+                                <select id="forma-pagamento-2">
+                                    <option value="PIX">PIX</option>
+                                    <option value="Dinheiro">Dinheiro</option>
+                                    <option value="Cartão">Cartão</option>
+                                    <option value="Transferência">Transferência</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="valor-pagamento-2">Valor (2ª forma):</label>
+                                <div class="currency-input">
+                                    <input type="text" id="valor-pagamento-2" placeholder="0,00" value="0,00" onblur="formatCurrency(this)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group" id="forma-pagamento-simples" style="display: block;">
+                    <label for="forma-pagamento">Forma de Pagamento:</label>
+                    <select id="forma-pagamento">
+                        <option value="PIX">PIX</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Cartão">Cartão</option>
+                        <option value="Transferência">Transferência</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cadastro">Número de Cadastro:</label>
+                    <input type="number" id="cadastro" placeholder="Digite o número de cadastro" min="1">
+                </div>
+                <div class="form-group">
+                    <label for="nome">Nome do Dizimista:</label>
+                    <input type="text" id="nome" placeholder="Digite o nome completo">
+                </div>
+                <div class="form-group">
+                    <label for="contato">Contato (Telefone/Email):</label>
+                    <input type="text" id="contato" placeholder="Digite o telefone ou email">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="data-devolucao">Data/Mês de Devolução:</label>
+                        <input type="text" id="data-devolucao" placeholder="DD/MM (data do ato)">
+                    </div>
+                    <div class="form-group" id="campo-valor-simples">
+                        <label for="valor">Valor:</label>
+                        <div class="currency-input">
+                            <input type="text" id="valor" placeholder="0,00" onblur="formatCurrency(this)">
+                        </div>
+                    </div>
+                </div>
+                <button onclick="cadastrarMembroEDizimo()">Cadastrar e Registrar</button>
+            </div>
+            
+            <div class="section">
+                <h2>Consultar Dados de Membro</h2>
+                <div class="form-group">
+                    <label for="cadastroConsulta">Número de Cadastro:</label>
+                    <input type="number" id="cadastroConsulta" placeholder="Digite o número de cadastro" min="1">
+                </div>
+                <button onclick="consultarMembro()">Consultar</button>
+                <div id="resultConsulta"></div>
+            </div>
+            
+            <div class="section">
+                <h2>Relatórios e Funções</h2>
+                <div class="buttons">
+                    <button onclick="emitirRelatorio()">Emitir Relatório</button>
+                    <button onclick="exportarParaExcel()">Exportar para CSV</button>
+                    <button onclick="limparBanco()" style="background-color: #e74c3c;">Limpar Banco de Dados</button>
+                </div>
+                <div id="result"></div>
+                <div id="relatorio"></div>
+            </div>
+        </div>
+        
+        <!-- Aba de Prestação de Contas -->
+        <div id="contas" class="tab-content">
+            <div class="accounting-section">
+                <h2 class="section-title">Saldo Anterior</h2>
+                <div class="accounting-form-group">
+                    <label for="saldo-anterior">Saldo Anterior:</label>
+                    <div class="currency-input">
+                        <input type="text" id="saldo-anterior" placeholder="0,00" value="0,00" onblur="formatCurrency(this)">
+                    </div>
+                </div>
+            </div>
+            <div class="accounting-section">
+                <h2 class="section-title">Entradas</h2>
+                <div id="entradas-container"></div>
+            </div>
+            <div class="accounting-section">
+                <h2 class="section-title">Saídas</h2>
+                <div id="saidas-container"></div>
+            </div>
+            <div class="accounting-buttons">
+                <button id="accounting-calcular">Calcular</button>
+                <button id="accounting-limpar">Limpar</button>
+            </div>
+            <div class="accounting-section">
+                <h2 class="section-title">Resumo</h2>
+                <div class="summary-title">Resumo do Caixa</div>
+                <div class="divider"></div>
+                <textarea id="resumo" readonly></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Editar/Excluir -->
+    <div id="modal-editar" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="fecharModal()">&times;</span>
+            <h2 id="modal-titulo">Editar Registro</h2>
+            <form id="modal-form">
+                <input type="hidden" id="modal-id">
+                <div class="form-group">
+                    <label for="modal-nome">Nome:</label>
+                    <input type="text" id="modal-nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-cadastro">Número de Cadastro:</label>
+                    <input type="number" id="modal-cadastro" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-contato">Contato:</label>
+                    <input type="text" id="modal-contato">
+                </div>
+                <div class="form-group">
+                    <label for="modal-data">Data/Mês de Devolução:</label>
+                    <input type="text" id="modal-data" placeholder="DD/MM" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-valor">Valor:</label>
+                    <div class="currency-input">
+                        <input type="text" id="modal-valor" placeholder="0,00" onblur="formatCurrency(this)" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="modal-forma-pagamento">Forma de Pagamento:</label>
+                    <select id="modal-forma-pagamento">
+                        <option value="PIX">PIX</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Cartão">Cartão</option>
+                        <option value="Transferência">Transferência</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="modal-meses">Meses Referência:</label>
+                    <input type="text" id="modal-meses" placeholder="Ex: 01/2024, 02/2024">
+                </div>
+                <button type="button" onclick="salvarEdicao()">Salvar Alterações</button>
+                <button type="button" onclick="excluirRegistro()" style="background-color: #e74c3c;">Excluir</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/database.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/dizimos.js"></script>
+    <script src="js/contas.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
